@@ -5,7 +5,7 @@ app = FastAPI(title="Backend API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "ask-your-docs-production-55de.up.railway.app"],
+    allow_origins=["http://localhost:3000", "https://ask-your-docs-production-55de.up.railway.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
