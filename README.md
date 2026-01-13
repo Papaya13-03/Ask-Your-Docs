@@ -1,56 +1,115 @@
 # Ask Your Docs
 
-A Retrieval-Augmented Generation (RAG) application that allows users to upload PDF documents and ask questions about their content using AI.
+A powerful Retrieval-Augmented Generation (RAG) application designed to bridge the gap between your documents and AI. Seamlessly upload PDF files and engage in intelligent conversations to extract insights, summaries, and answers directly from your content.
 
-## Features
+## 🌟 Features
 
-- **Document Upload**: Upload multiple PDF documents securely.
-- **RAG Architecture**: Efficient document chunking and embedding using Qdrant.
-- **AI-Powered Chat**: Ask questions and get accurate answers based on your uploaded documents.
-- **Modern UI**: Clean and responsive component-based frontend.
+- **📄 Smart Document Ingestion**: Robust support for uploading and processing multiple PDF documents simultaneously using `pdfplumber` and `pypdf2`.
+- **🔍 High-Performance Vector Search**: utilizes **Qdrant**, a high-performance vector database, for efficient embedding storage and retrieval.
+- **🤖 Advanced AI Integration**: Powered by **OpenAI's GPT models** to provide accurate, context-aware responses based on your data.
+- **⚡ Modern, Reactive Frontend**: Built with **Next.js 16** and **React 19**, offering a lightning-fast user experience.
+- **🎨 Sleek UI Design**: Styled with **TailwindCSS v4**, featuring a clean, responsive, and user-friendly interface.
+- **☁️ Scalable Backend**: Developed with **FastAPI**, ensuring high performance and easy extensibility.
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-- **Frontend**: Next.js, React, TypeScript, TailwindCSS
-- **Backend**: FastAPI, Python
+### Frontend
+
+- **Framework**: Next.js 16 (React 19)
+- **Language**: TypeScript
+- **Styling**: TailwindCSS v4
+- **State Management & Data Fetching**: @tanstack/react-query
+- **Linting**: ESLint
+
+### Backend
+
+- **Framework**: FastAPI
+- **Runtime**: Python 3.12+
+- **Package Management**: uv
 - **Vector Database**: Qdrant
-- **AI Model**: OpenAI (GPT models)
+- **AI/LLM**: OpenAI API
+- **PDF Processing**: pdfplumber, pypdf2
 
-## Getting Started
+## 📂 Project Structure
+
+```bash
+AskYourDocs/
+├── backend/                # Python FastAPI Backend
+│   ├── app/                # Application source code
+│   │   ├── main.py         # Entry point
+│   │   └── ...
+│   ├── uploads/            # Temporary storage for uploaded files
+│   ├── qdrant/             # Local Qdrant data storage
+│   ├── pyproject.toml      # Python dependencies (managed by uv)
+│   └── .env                # Backend environment variables
+├── frontend/               # Next.js Frontend
+│   ├── app/                # App router pages and layouts
+│   ├── components/         # Reusable UI components
+│   ├── hooks/              # Custom React hooks
+│   ├── lib/                # Utility functions
+│   ├── public/             # Static assets
+│   ├── package.json        # Frontend dependencies
+│   └── ...
+├── makefile                # Convenience commands for running the app
+└── README.md               # Project documentation
+```
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Python 3.12+
-- Node.js & npm
-- OpenAI API Key
+Ensure you have the following installed on your system:
+
+- **Python 3.12+**
+- **Node.js** (LTS recommended) & **npm**
+- **uv** (Python package installer and resolver) - `pip install uv`
+- An **OpenAI API Key**
 
 ### Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd AskYourDocs
-   ```
+1.  **Clone the repository**
 
-2. **Backend Setup**
-   
-   Create a `.env` file in the `backend` directory:
-   ```bash
-   cp backend/.env.example backend/.env
-   ```
-   *Make sure to populate `OPENAI_API_KEY` in the `.env` file.*
+    ```bash
+    git clone <repository-url>
+    cd AskYourDocs
+    ```
 
-   Run the backend:
-   ```bash
-   make run-backend
-   ```
+2.  **Backend Setup**
+    Navigate to the backend directory and set up your environment variables:
 
-3. **Frontend Setup**
+    ```bash
+    cp backend/.env.example backend/.env
+    ```
 
-   Run the frontend:
-   ```bash
-   make run-frontend
-   ```
+    _Open `backend/.env` and add your `OPENAI_API_KEY`._
 
-4. **Access the App**
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
+    Run the backend server using the makefile:
+
+    ```bash
+    make run-backend
+    ```
+
+    _This command uses `uv` to handle dependencies and start the Uvicorn server on port 8000._
+
+3.  **Frontend Setup**
+    In a new terminal wndow, install dependencies and start the frontend:
+
+    ```bash
+    make run-frontend
+    ```
+
+    _The frontend will start on port 3000._
+
+4.  **Access the Application**
+    Open your browser and navigate to:
+    [http://localhost:3000](http://localhost:3000)
+
+## 📖 Usage Guide
+
+1.  **Upload Documents**: Use the "Upload" section to drag and drop or select your PDF files. The system will process and index them.
+2.  **Ask Questions**: Type your query in the chat interface. The AI will search your uploaded documents for relevant context and provide an answer.
+3.  **Explore**: Upload diverse documents to see how the RAG architecture handles different types of content.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
